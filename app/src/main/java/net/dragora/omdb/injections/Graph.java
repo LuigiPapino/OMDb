@@ -3,6 +3,7 @@ package net.dragora.omdb.injections;
 import android.app.Application;
 
 import net.dragora.omdb.MyApplication;
+import net.dragora.omdb.ui.history.HistorySearchActivity;
 
 import javax.inject.Singleton;
 
@@ -19,6 +20,8 @@ public interface Graph {
 
 
     void inject(MyApplication myApplication);
+
+    void inject(HistorySearchActivity historySearchActivity);
 
     final class Initializer {
 

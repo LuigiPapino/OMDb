@@ -27,10 +27,11 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         instance = this;
-        super.onCreate();
         refWatcher = LeakCanary.install(this);
         graph = Graph.Initializer.init(this);
         graph.inject(this);
+        super.onCreate();
+
     }
 
 

@@ -1,4 +1,4 @@
-package net.dragora.omdb.model;
+package net.dragora.omdb.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -339,6 +339,5 @@ public class ResponseMovie implements Parcelable{
     public String toString(){
         return "runtime = " + mRuntime + ", year = " + mYear + ", rated = " + mRated + ", poster = " + mPoster + ", plot = " + mPlot + ", actor = " + mActor + ", released = " + mReleased + ", imdbRating = " + mImdbRating + ", imdbVote = " + mImdbVote + ", metascore = " + mMetascore + ", imdbID = " + mImdbID + ", genre = " + mGenre + ", type = " + mType + ", writer = " + mWriter + ", language = " + mLanguage + ", error = " + mError + ", country = " + mCountry + ", title = " + mTitle + ", response = " + mResponse + ", award = " + mAward + ", director = " + mDirector;
     }
-
 
 }

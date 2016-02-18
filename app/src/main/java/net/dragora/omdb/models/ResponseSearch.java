@@ -1,4 +1,4 @@
-package net.dragora.omdb.model;
+package net.dragora.omdb.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
