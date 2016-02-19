@@ -26,5 +26,7 @@ public interface HistoryStore {
 
     void put(@NonNull String keyword, @NonNull ResponseSearch search);
 
+    void delete(@NonNull String keyword);
+
 
 }

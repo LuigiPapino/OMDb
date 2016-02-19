@@ -59,7 +59,6 @@ public class HistoryStoreFromProvider implements HistoryStore {
         try {
             values.put(HistoryColumns._ID, keyword.hashCode());
             values.put(HistoryColumns.KEYWORD, keyword);
-
             values.put(HistoryColumns.JSON, LoganSquare.serialize(search));
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,6 +74,12 @@ public class HistoryStoreFromProvider implements HistoryStore {
             getContentResolver().insert(HistoryProvider.History.HISTORY, values);
         if (cursor != null)
             cursor.close();
+    }
+
+    @Override
+    public void delete(@NonNull String keyword) {
+        getContentResolver()
+                .delete(HistoryProvider.History.HISTORY, HistoryColumns.KEYWORD + " = ?", new String[]{keyword});
     }
 
     private ContentResolver getContentResolver() {

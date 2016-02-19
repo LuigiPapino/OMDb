@@ -14,12 +14,19 @@ import java.util.List;
 @JsonObject
 public class ResponseSearch implements Parcelable{
 
+    public static final Creator<ResponseSearch> CREATOR = new Creator<ResponseSearch>() {
+        public ResponseSearch createFromParcel(Parcel in) {
+            return new ResponseSearch(in);
+        }
+
+        public ResponseSearch[] newArray(int size) {
+            return new ResponseSearch[size];
+        }
+    };
     private static final String FIELD_SEARCH = "Search";
     private static final String FIELD_ERROR = "Error";
     private static final String FIELD_RESPONSE = "Response";
     private static final String FIELD_TOTAL_RESULTS = "totalResults";
-
-
     @SerializedName(FIELD_SEARCH)
     @JsonField(name = FIELD_SEARCH)
     private List<Search> mSearches;
@@ -32,42 +39,10 @@ public class ResponseSearch implements Parcelable{
     @SerializedName(FIELD_TOTAL_RESULTS)
     @JsonField(name = FIELD_TOTAL_RESULTS)
     private int mTotalResult;
-
+    private String keyword;
 
     public ResponseSearch(){
 
-    }
-
-    public void setSearches(List<Search> searches) {
-        mSearches = searches;
-    }
-
-    public List<Search> getSearches() {
-        return mSearches;
-    }
-
-    public void setError(String error) {
-        mError = error;
-    }
-
-    public String getError() {
-        return mError;
-    }
-
-    public void setResponse(String response) {
-        mResponse = response;
-    }
-
-    public String getResponse() {
-        return mResponse;
-    }
-
-    public void setTotalResult(int totalResult) {
-        mTotalResult = totalResult;
-    }
-
-    public int getTotalResult() {
-        return mTotalResult;
     }
 
     public ResponseSearch(Parcel in) {
@@ -76,6 +51,47 @@ public class ResponseSearch implements Parcelable{
         mError = in.readString();
         mResponse = in.readString();
         mTotalResult = in.readInt();
+        keyword = in.readString();
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public List<Search> getSearches() {
+        return mSearches;
+    }
+
+    public void setSearches(List<Search> searches) {
+        mSearches = searches;
+    }
+
+    public String getError() {
+        return mError;
+    }
+
+    public void setError(String error) {
+        mError = error;
+    }
+
+    public String getResponse() {
+        return mResponse;
+    }
+
+    public void setResponse(String response) {
+        mResponse = response;
+    }
+
+    public int getTotalResult() {
+        return mTotalResult;
+    }
+
+    public void setTotalResult(int totalResult) {
+        mTotalResult = totalResult;
     }
 
     @Override
@@ -83,22 +99,13 @@ public class ResponseSearch implements Parcelable{
         return 0;
     }
 
-    public static final Creator<ResponseSearch> CREATOR = new Creator<ResponseSearch>() {
-        public ResponseSearch createFromParcel(Parcel in) {
-            return new ResponseSearch(in);
-        }
-
-        public ResponseSearch[] newArray(int size) {
-        return new ResponseSearch[size];
-        }
-    };
-
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedList(mSearches);
         dest.writeString(mError);
         dest.writeString(mResponse);
         dest.writeInt(mTotalResult);
+        dest.writeString(keyword);
     }
 
     @Override
