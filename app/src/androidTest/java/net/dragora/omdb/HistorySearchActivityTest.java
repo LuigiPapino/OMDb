@@ -40,6 +40,7 @@ import static org.hamcrest.Matchers.not;
  */
 @RunWith(AndroidJUnit4.class)
 public class HistorySearchActivityTest {
+    //test
     @Rule
     public ActivityTestRule<HistorySearchActivity_> historyActivity = new ActivityTestRule<HistorySearchActivity_>(HistorySearchActivity_.class);
 
